@@ -1,0 +1,6 @@
+node_modules/
+originals/
+.wrangler/
+.dev.vars
+.DS_Store
+Thumbs.db

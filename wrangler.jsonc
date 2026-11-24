@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ai-image-compare",
+  "compatibility_date": "2025-11-01",
+  // Reine Static-Site: Cloudflare liefert alles aus ./public aus, kein Worker-Code nötig.
+  "assets": {
+    "directory": "./public",
+    "not_found_handling": "single-page-application"
+  }
+}

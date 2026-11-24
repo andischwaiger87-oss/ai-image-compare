@@ -1,0 +1,88 @@
+{
+  "title": "Ein Prompt. Vier Modelle. Drei Jahre.",
+  "intro": "Im Jänner 2023 habe ich diese Prompts in Midjourney V4 eingegeben. Heute laufen exakt dieselben Texte durch Midjourney V8.2, ChatGPT und Gemini. Kein Wort geändert, kein Nachbessern.",
+  "models": [
+    {
+      "id": "mj-v4",
+      "name": "Midjourney",
+      "version": "V4",
+      "maker": "Midjourney",
+      "date": "2023-01-18",
+      "color": "#b08d57"
+    },
+    {
+      "id": "mj-v8-2",
+      "name": "Midjourney",
+      "version": "V8.2",
+      "maker": "Midjourney",
+      "date": "2026-11-23",
+      "color": "#d9b878"
+    },
+    {
+      "id": "chatgpt",
+      "name": "ChatGPT",
+      "version": "",
+      "maker": "OpenAI",
+      "date": "2026-11-23",
+      "color": "#7fb8a4"
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "version": "",
+      "maker": "Google",
+      "date": "2026-11-23",
+      "color": "#8aa6e0"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "monkey-astronaut",
+      "title": "Affe im All",
+      "prompt": "Monkey Astronaut in space suit Bananas floating in orbit Surreal planet like a jungle ultra detailed",
+      "images": ["mj-v4", "mj-v8-2", "chatgpt", "gemini"]
+    },
+    {
+      "id": "snowman-dali",
+      "title": "Schneemann in der Wüste",
+      "prompt": "snowman melts in surreal desert landscape salvador dali style ::1 ultra detailed ::1",
+      "images": ["mj-v4", "mj-v8-2", "chatgpt", "gemini"]
+    },
+    {
+      "id": "girl-wolf",
+      "title": "Mädchen und Wolf",
+      "prompt": "young cute child girl hugs grey wolf in a fairytale forest ::1 mystic setting ::1 dreamy ::1 soft light ::1 stunning ::1 ultra detailed ::1",
+      "images": ["mj-v4", "mj-v8-2", "gemini"]
+    },
+    {
+      "id": "glamour-portrait",
+      "title": "Porträt mit Sonnenbrille",
+      "prompt": "Portrait of a confident weirred young glamorous chic with big dark sun glasses ::1 brown skin ::1 ebony ::1 pink dress ::1 style of leonado da vinci ::1 mona lisa ::1",
+      "images": ["mj-v4", "mj-v8-2", "chatgpt", "gemini"]
+    },
+    {
+      "id": "jesus-smartphone",
+      "title": "Jesus mit Smartphone",
+      "prompt": "Paining of Jesus with a Smartphone and Headphones, in the style of Peter Paul Rubens",
+      "images": ["mj-v4", "mj-v8-2", "chatgpt", "gemini"]
+    },
+    {
+      "id": "lost-child",
+      "title": "Das verlorene Kind",
+      "prompt": "Painting of a lost child floating in a small wooden boat on the open sea. In the background a huge, extensive landscape that has been destroyed by climate change. Floating icebergs, drought and desert landscape. Polluted water with plastic and oil, brown dead plants, fungi & fungal spores infest the environment. The sky is gray and gloomy with a brilliant dramatic light on the horizon. focus on the child. Very detailed representation, by leonardo da vinci",
+      "images": ["mj-v4", "mj-v8-2", "chatgpt", "gemini"]
+    },
+    {
+      "id": "ship-quicksand",
+      "title": "Schiff im Treibsand",
+      "prompt": "Painting of a huge wooden ship with lots of skinny animals stuck in the quicksand, in the background an drought expansive landscape with a dried up reef, No sail, the sky is gray and gloomy with a brilliant dramatic light on the horizon, focus on the ship, very detailed representation, by leonardo da vinci",
+      "images": ["mj-v4", "mj-v8-2", "chatgpt", "gemini"]
+    },
+    {
+      "id": "last-supper",
+      "title": "Das Abendmahl der Frauen",
+      "prompt": "Painting of a self-confident black girl in the center with twelve women arround her, Last Supper, emotional, Dramatic light focuses on the center, detailed beautiful faces, soft light,  Renaissance, by Leonardo da Vinci",
+      "images": ["mj-v4", "mj-v8-2", "chatgpt", "gemini"]
+    }
+  ]
+}

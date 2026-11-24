@@ -1,0 +1,16 @@
+{
+  "name": "ai-image-compare",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Ein Prompt, vier Modelle, drei Jahre – KI-Bildvergleich von mosaik",
+  "type": "module",
+  "scripts": {
+    "images": "node scripts/build-images.mjs",
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "sharp": "^0.34.0",
+    "wrangler": "^4.0.0"
+  }
+}

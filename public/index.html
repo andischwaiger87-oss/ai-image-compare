@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ein Prompt. Drei Jahre. – KI-Bildvergleich | mosaik</title>
+  <meta name="description" content="Derselbe Prompt in Midjourney V4 (2023), Midjourney V8.2, ChatGPT und Gemini. Ein Vergleich, wie sich KI-Bildgenerierung entwickelt hat.">
+  <meta name="theme-color" content="#0e0d0c">
+  <meta property="og:title" content="Ein Prompt. Drei Jahre. – KI-Bildvergleich">
+  <meta property="og:description" content="Midjourney V4 aus 2023 gegen die Modelle von heute. Gleicher Prompt, kein Wort geändert.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/images/monkey-astronaut/mj-v8-2.webp">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Zum Inhalt</a>
+
+  <header class="topbar">
+    <a class="brand" href="#/" aria-label="Zur Übersicht">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="brand-name">mosaik</span>
+      <span class="brand-sep" aria-hidden="true">/</span>
+      <span class="brand-sub">KI-Bildvergleich</span>
+    </a>
+    <nav class="topnav" aria-label="Navigation">
+      <a href="#/">Übersicht</a>
+      <a href="#/about">Methode</a>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <div id="view" aria-live="polite"></div>
+  </main>
+
+  <footer class="foot">
+    <p>Alle Bilder mit unverändertem Prompt erzeugt. Keine Nachbearbeitung.</p>
+    <p><a href="https://mosaik-design.at" rel="noopener">mosaik</a> · Unken, Salzburg</p>
+  </footer>
+
+  <dialog id="lightbox" aria-label="Bildansicht">
+    <figure class="lb-figure">
+      <img id="lb-img" alt="">
+      <figcaption id="lb-cap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-close" data-lb="close" aria-label="Schließen">×</button>
+    <button class="lb-btn lb-prev" data-lb="prev" aria-label="Vorheriges Bild">‹</button>
+    <button class="lb-btn lb-next" data-lb="next" aria-label="Nächstes Bild">›</button>
+  </dialog>
+
+  <noscript><p class="noscript">Diese Seite braucht JavaScript.</p></noscript>
+</body>
+</html>
