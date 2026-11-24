@@ -71,7 +71,7 @@
         <section class="hero">
           <div class="hero-text">
             <p class="eyebrow">${esc(modelLabel(first))} · ${esc(fmtMonth.format(new Date(first.date)))} → heute</p>
-            <h1>${esc(data.title)}</h1>
+            <h1>${esc(data.title).replace(/([^.]+\.)\s*$/, '<span class="grad">$1</span>')}</h1>
             <p class="lead">${esc(data.intro)}</p>
             <dl class="stats">
               <div><dt>Prompts</dt><dd>${data.prompts.length}</dd></div>
