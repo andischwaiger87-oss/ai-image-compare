@@ -1,14 +1,30 @@
 {
-  "title": "Ein Prompt. Vier Modelle. Drei Jahre.",
-  "intro": "Im Jänner 2023 habe ich diese Prompts in Midjourney V4 eingegeben. Heute laufen exakt dieselben Texte durch Midjourney V8.2, ChatGPT und Gemini. Kein Wort geändert, kein Nachbessern.",
+  "title": "Ein Prompt. Damals und heute.",
+  "intro": "Zwischen 2022 und 2023 habe ich diese Prompts in Midjourney eingegeben, mit V3, V4 und V5. Heute laufen exakt dieselben Texte durch Midjourney V8.2, ChatGPT und Gemini. Kein Wort geändert, kein Nachbessern.",
   "models": [
+    {
+      "id": "mj-v3",
+      "name": "Midjourney",
+      "version": "V3",
+      "maker": "Midjourney",
+      "date": "2022-07-25",
+      "color": "#857d78"
+    },
     {
       "id": "mj-v4",
       "name": "Midjourney",
       "version": "V4",
       "maker": "Midjourney",
       "date": "2023-01-18",
-      "color": "#9c948e"
+      "color": "#a29a94"
+    },
+    {
+      "id": "mj-v5",
+      "name": "Midjourney",
+      "version": "V5",
+      "maker": "Midjourney",
+      "date": "2023-03-15",
+      "color": "#c2bab4"
     },
     {
       "id": "mj-v8-2",
@@ -16,7 +32,8 @@
       "version": "V8.2",
       "maker": "Midjourney",
       "date": "2026-11-23",
-      "color": "#b07cff"
+      "color": "#b07cff",
+      "current": true
     },
     {
       "id": "chatgpt",
@@ -24,7 +41,8 @@
       "version": "",
       "maker": "OpenAI",
       "date": "2026-11-23",
-      "color": "#4fd1b0"
+      "color": "#4fd1b0",
+      "current": true
     },
     {
       "id": "gemini",
@@ -32,7 +50,8 @@
       "version": "",
       "maker": "Google",
       "date": "2026-11-23",
-      "color": "#7aa7ff"
+      "color": "#7aa7ff",
+      "current": true
     }
   ],
   "prompts": [
@@ -65,6 +84,7 @@
       "images": [
         "mj-v4",
         "mj-v8-2",
+        "chatgpt",
         "gemini"
       ]
     },
@@ -118,6 +138,189 @@
       "prompt": "Painting of a self-confident black girl in the center with twelve women arround her, Last Supper, emotional, Dramatic light focuses on the center, detailed beautiful faces, soft light,  Renaissance, by Leonardo da Vinci",
       "images": [
         "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "robot-supper",
+      "title": "Das Abendmahl der Roboter",
+      "prompt": "Painting of a high tech robot in the center with twelve robots arround, Last Supper, detailed faces, emotional, Dramatic light focuses on the center, soft light, Renaissance, by rembrandt",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "fibonacci-aurora",
+      "title": "Spiralweg ins Polarlicht",
+      "prompt": "an enchanted overgrown path to an infinite fibunaci spiral Aurora, hyper detailed transcendent surreal landscape from another realm, Aurorae,  Low Angle, Biomorphic style,",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "dali-valley",
+      "title": "Das verkehrte Tal",
+      "prompt": "masterful painting of a strange enchanted valley with unusual looking vegetation, wonderful dreamlike idyll, mountains tower down from the sky, a big waterfall and small streams run down the mountain, paths into the valley are a labyrinth, upside down world, surreal style, atmospheric Light effects with sunbeams, Painting By salvador dali,",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "alice-wonderland",
+      "title": "Alice im Wunderland",
+      "prompt": "A very weirred version of alice in wonderland, a girl accidentally ended up in a fantasy realm Wonderland. Wonderland is full of special animals and characters, Cheshire Cat, the White Rabbit, the March Hare, the Mad Hatter, and the Red Queen ,bioluminescent landscape, by Alena Aenami",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "gemini"
+      ],
+      "refused": [
+        "chatgpt"
+      ]
+    },
+    {
+      "id": "space-opera-rembrandt",
+      "title": "Weltraumoper nach Rembrandt",
+      "prompt": "Epic Renaissance painting by rembrandt of a futuristic large space opera with a big wide stage, central perspective constructed monumental interior, a dignified flying woman with divine aura with a very long white dress is flying in the center, in the front the persons on a big wide stage, in the distant background a huge deep space in the style of Raphael's the school of Athens, Three Rensaissance guardsmen protect the woman, warm golden and red colors, focus on the flying woman, Sparks float in the atmosphere, very highly detailed, by rembrandt",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "wood-samples",
+      "title": "Holzmuster",
+      "prompt": "Woman holds wood samples in her hands, natural colors, minimalistic illustration,",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "ronaldo-aged",
+      "title": "Ronaldo, gealtert",
+      "prompt": "Portrait of Christiano Ronaldo aged, Ultra Realistic",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt"
+      ],
+      "refused": [
+        "gemini"
+      ]
+    },
+    {
+      "id": "pizza-world",
+      "title": "Die Pizzawelt",
+      "prompt": "a euphoric happy child enters a mysterious access to a stranger world made of tasty pizza, very high details, 4k, disney style",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "robot-painter",
+      "title": "Der Roboter als Maler",
+      "prompt": "A futuristic white robot artist paints a masterful painting, works in a nice modern workshop, minimalistic interior, calm, by peter paul rubens",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "cat-hoody",
+      "title": "Katze im Hoodie",
+      "prompt": "cat with hoody, realistic",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "microorganism",
+      "title": "Ordnung ohne Entropie",
+      "prompt": "dynamic microorganism in a ordered system, no entropy, realistic",
+      "images": [
+        "mj-v4",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "robot-doctor",
+      "title": "Der Pflegeroboter",
+      "prompt": "A futuristic white doctor robot takes care of a sick old woman, Lies in the bed, modern hospital room with plants, beautiful detailed faces, realistic,",
+      "images": [
+        "mj-v3",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "sustainable-future",
+      "title": "Grüne Zukunft",
+      "prompt": "Imagine a world where we work in harmony with nature to save our planet from the impacts of climate change. Create a visual masterpiece that showcases innovative, sustainable solutions that can help us restore balance and protect our planet for future generations. Use a mix of photography and digital design to illustrate these solutions, such as renewable energy sources, green transportation, regenerative agriculture, and zero-waste systems. Experiment with different color palettes and typography to create a sense of urgency and inspiration for viewers to take action. Consider incorporating real-world examples of successful sustainable projects and initiatives to inspire and educate viewers. Finally, use a thought-provoking composition to create a sense of momentum and optimism for the future, inviting viewers to be a part of the solution and join the movement towards a more sustainable future",
+      "images": [
+        "mj-v5",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "space-opera-theater",
+      "title": "Das Weltraumtheater",
+      "prompt": "Create a captivating masterpiece that blends the grandeur of the Space Opera Theater with the timeless elegance of Rembrandt's style. Through a wide-angle shot, showcase the intricate details of this magnificent structure, featuring a blend of traditional and futuristic design elements. In the foreground, place a woman in the style of Rembrandt, with a focus on her dramatic facial expression and body language, creating a clear focal point for the viewer. Use a warm and harmonious color palette to create a sense of intimacy and depth in the scene, emphasizing the intricate lighting and visual effects of the theater. Experiment with different camera angles and compositions to highlight the unique features and architecture of the theater, emphasizing its futuristic and otherworldly nature. Consider incorporating other characters in the scene, such as musicians, singers, and audience members, to add depth and interest to the image. Use a blend of classical and contemporary music to create an immersive audio experience, capturing the essence and spirit of the opera. Finally, use a blend of traditional and digital techniques to create a work of art that is both classic and modern, showcasing the boundless possibilities of human imagination and creativity",
+      "images": [
+        "mj-v5",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ],
+      "notes": {
+        "mj-v8-2": "Mit gekürzter Prompt-Fassung erzeugt"
+      }
+    },
+    {
+      "id": "striking-portrait",
+      "title": "Das psychologische Porträt",
+      "prompt": "Create a striking portrait by using psychological tricks like bold contrasting colors, intricate patterns, and eye contact to convey intimacy and emotion. Use lighting to highlight facial features and evoke a specific mood. Incorporate universal symbolism to add depth and meaning to the piece. Consider the placement of the portrait to affect the viewer's emotional response, in the style of the Renaissance era, taking inspiration from the works of Leonardo da Vinci",
+      "images": [
+        "mj-v5",
+        "mj-v8-2",
+        "chatgpt",
+        "gemini"
+      ]
+    },
+    {
+      "id": "dragon-rider",
+      "title": "Der Drachenreiter",
+      "prompt": "Create an epic image of a dragon rescue rider, perched atop a majestic dragon, swooping down to save a captured princess, Use a dynamic composition and dramatic lighting to convey a sense of urgency and danger, while also capturing the bravery and heroism of the dragon rescue rider",
+      "images": [
+        "mj-v5",
         "mj-v8-2",
         "chatgpt",
         "gemini"

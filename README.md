@@ -49,6 +49,20 @@ in der App, am besten chronologisch):
 ```
 
 Danach die Bilder als `originals/<prompt-id>/flux-2.png` ablegen und `npm run images`.
+
+`"current": true` markiert die heutigen Vergleichsmodelle. Sie erscheinen bei jedem Prompt,
+auch ohne Bild. Alte Ausgangsmodelle (Midjourney V3/V4/V5) erscheinen nur dort, wo es ein Bild gibt.
+
+## Verweigert und Hinweise
+
+Pro Prompt optional:
+
+```json
+"refused": ["chatgpt"],
+"notes": { "mj-v8-2": "Mit gekürzter Prompt-Fassung erzeugt" }
+```
+
+`refused` zeigt statt des Bildes „Anfrage vom Modell verweigert“. `notes` erscheint unter dem Bild.
 Für ChatGPT und Gemini ist `version` leer – bei Bedarf eintragen, die App zeigt sie dann an.
 
 ## Lokal ansehen

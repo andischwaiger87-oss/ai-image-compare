@@ -10,7 +10,7 @@
   const lbImg = document.getElementById('lb-img');
   const lbCap = document.getElementById('lb-cap');
 
-  const state = { data: null, models: new Map(), mode: 'grid', pair: null, lbList: [], lbIndex: 0 };
+  const state = { data: null, models: new Map(), mode: 'grid', pair: null, lbList: [], lbIndex: 0, filter: 'all' };
 
   const fmtMonth = new Intl.DateTimeFormat('de-AT', { month: 'long', year: 'numeric' });
   const fmtDay = new Intl.DateTimeFormat('de-AT', { day: 'numeric', month: 'long', year: 'numeric' });
@@ -25,6 +25,14 @@
 
   // Modelle eines Prompts in der globalen Reihenfolge (chronologisch, wie in gallery.json)
   const modelsOf = (p) => state.data.models.filter((m) => p.images.includes(m.id));
+
+  // Alle Plätze eines Prompts: vorhandene Bilder + aktuelle Modelle ohne Bild (verweigert/fehlt)
+  const slotsOf = (p) => state.data.models
+    .filter((m) => p.images.includes(m.id) || m.current)
+    .map((m) => ({ m, has: p.images.includes(m.id), refused: (p.refused || []).includes(m.id), note: (p.notes || {})[m.id] }));
+
+  // Ältestes Bild eines Prompts (z. B. Midjourney V3/V4/V5)
+  const originOf = (p) => modelsOf(p).find((m) => !m.current);
 
   // ---------- compare slider ----------
   function compare(p, leftId, rightId, { hero = false } = {}) {
@@ -102,6 +110,7 @@
             <h2 id="prompts-h">Die Prompts</h2>
             <p>Jede Karte ein Prompt, jede Kachel ein Modell.</p>
           </div>
+          ${filters()}
           <ol class="cards">
             ${data.prompts.map((p, i) => card(p, i)).join('')}
           </ol>
@@ -109,16 +118,44 @@
       </div>`);
 
     el.querySelector('.hero-cmp').append(compare(hero, heroModels[0].id, heroModels[1].id, { hero: true }));
+
+    const chips = el.querySelector('.chips');
+    if (chips) chips.addEventListener('click', (e) => {
+      const b = e.target.closest('button'); if (!b) return;
+      state.filter = b.dataset.f;
+      chips.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
+      applyFilter(el);
+    });
+    applyFilter(el);
     return el;
   }
 
+  function filters() {
+    const { data } = state;
+    const origins = data.models.filter((m) => !m.current)
+      .map((m) => ({ m, n: data.prompts.filter((p) => originOf(p)?.id === m.id).length }))
+      .filter((x) => x.n);
+    if (origins.length < 2) return '';
+    const f = state.filter || 'all';
+    return `<div class="chips" role="group" aria-label="Nach Ausgangsmodell filtern">
+      <span class="chips-label">Ausgangsbild</span>
+      <button type="button" data-f="all" aria-pressed="${f === 'all'}">Alle <small>${data.prompts.length}</small></button>
+      ${origins.map(({ m, n }) => `<button type="button" data-f="${m.id}" aria-pressed="${f === m.id}" style="--c:${m.color}">${esc(modelLabel(m))} <small>${n}</small></button>`).join('')}
+    </div>`;
+  }
+
+  function applyFilter(root) {
+    const f = state.filter || 'all';
+    root.querySelectorAll('.cards > li').forEach((li) => { li.hidden = f !== 'all' && li.dataset.origin !== f; });
+  }
+
   function card(p, i) {
-    const ms = state.data.models;
-    const cells = ms.slice(0, 4).map((m) => p.images.includes(m.id)
+    const origin = originOf(p);
+    const cells = slotsOf(p).slice(0, 4).map(({ m, has, refused }) => has
       ? `<span class="tile"><img src="${src(p.id, m.id, true)}" alt="" loading="lazy" decoding="async"><b style="--c:${m.color}">${esc(modelLabel(m))}</b></span>`
-      : `<span class="tile tile--empty"><b>${esc(modelLabel(m))}</b><em>kein Bild</em></span>`).join('');
+      : `<span class="tile tile--empty"><b>${esc(modelLabel(m))}</b><em>${refused ? 'verweigert' : 'kein Bild'}</em></span>`).join('');
     return `
-      <li>
+      <li data-origin="${origin ? origin.id : ''}">
         <a class="card" href="#/p/${esc(p.id)}">
           <span class="card-mosaic">${cells}</span>
           <span class="card-body">
@@ -205,8 +242,21 @@
   const opts = (ms, sel) => ms.map((m) => `<option value="${m.id}" ${m.id === sel ? 'selected' : ''}>${esc(modelLabel(m))}</option>`).join('');
 
   function grid(p, ms) {
-    const el = h(`<div class="grid" style="--n:${ms.length}"></div>`);
-    ms.forEach((m, idx) => {
+    const slots = slotsOf(p);
+    const el = h(`<div class="grid" style="--n:${slots.length}"></div>`);
+    slots.forEach(({ m, has, refused, note }) => {
+      if (!has) {
+        el.append(h(`
+          <figure class="shot shot--empty" style="--c:${m.color}">
+            <div class="shot-btn shot-empty"><span>${refused ? 'Anfrage vom Modell verweigert' : 'Kein Bild vorhanden'}</span></div>
+            <figcaption>
+              <strong>${esc(modelLabel(m))}</strong>
+              <span>${esc(m.maker)}</span>
+            </figcaption>
+          </figure>`));
+        return;
+      }
+      const idx = ms.indexOf(m);
       const fig = h(`
         <figure class="shot" style="--c:${m.color}">
           <button type="button" class="shot-btn" aria-label="${esc(modelLabel(m))} groß ansehen">
@@ -216,6 +266,7 @@
           <figcaption>
             <strong>${esc(modelLabel(m))}</strong>
             <span>${esc(m.maker)} · ${esc(fmtMonth.format(new Date(m.date)))}</span>
+            ${note ? `<em class="note">ⓘ ${esc(note)}</em>` : ''}
           </figcaption>
         </figure>`);
       fig.querySelector('button').addEventListener('click', () => openLb(ms.map((x) => ({ p, m: x })), idx));
@@ -232,8 +283,9 @@
         <h1>Methode</h1>
         <p class="lead">Ein fairer Vergleich braucht feste Regeln. Diese hier.</p>
         <ol class="rules">
-          <li><strong>Gleicher Prompt.</strong> Der Text aus 2023 wird wortgleich übernommen. Auch Tippfehler und Midjourney-Gewichtungen wie <code>::1</code> bleiben drin.</li>
+          <li><strong>Gleicher Prompt.</strong> Der ursprüngliche Text aus 2022/2023 wird wortgleich übernommen. Auch Tippfehler und Midjourney-Gewichtungen wie <code>::1</code> bleiben drin.</li>
           <li><strong>Ein Durchgang.</strong> Pro Modell ein Ergebnis. Kein Nachschärfen, kein zweiter Versuch mit besserem Prompt.</li>
+          <li><strong>Verweigert bleibt verweigert.</strong> Lehnt ein Modell die Anfrage ab, steht das so in der Übersicht. Es wird nicht umformuliert, bis es klappt.</li>
           <li><strong>Keine Nachbearbeitung.</strong> Gezeigt wird, was das Modell geliefert hat. Für das Web nur verkleinert und als WebP gespeichert.</li>
         </ol>
         <h2>Modelle</h2>
